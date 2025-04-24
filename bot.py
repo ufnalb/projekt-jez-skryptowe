@@ -21,15 +21,7 @@ bot = commands.Bot(command_prefix='.', intents=intents)
 # coinbase gets a reference to a new instance of Coinbase class
 coinbase = Coinbase()
 
-"""
-Use bot.event() decorator to register an event.
 
-(Event) Callback function - a function that is called
-when something happens.
-
-In this case the on_ready() event is called when the bot
-has finished logging in and setting things up.
-"""
 @bot.event
 async def on_ready():
     """Called when the bot has finished logging in and
@@ -38,7 +30,6 @@ async def on_ready():
     print('--------')
 
 
-# Commands
 @bot.command()
 async def echo(context: commands.Context, *messages):
     """Repeats a message (or messages) back to the user."""
@@ -50,7 +41,6 @@ async def echo(context: commands.Context, *messages):
 @bot.command()
 async def uselessfact(context: commands.Context):
     """Basic HTTP GET request."""
-    # Note: you could improve this by using a Session
     response = requests.get('https://uselessfacts.jsph.pl/random.json')
 
     if response.status_code == 200:

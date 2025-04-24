@@ -1,6 +1,5 @@
 from datetime import datetime
 from dateutil.rrule import rrule, MONTHLY
-import json
 import requests
 
 class Coinbase:
@@ -41,8 +40,6 @@ class Coinbase:
 
             crypto_currencies = {}
             for crypto_currency in json_response["data"]:
-                # key = crypto_currency["code"]
-                # value = crypto_currency["name"]
                 crypto_currencies[ crypto_currency["code"] ] = crypto_currency["name"]
             
             return crypto_currencies
@@ -146,29 +143,3 @@ class Coinbase:
         """Load contents of self._base_currencies and self._crypto_currencies."""
         self._base_currencies = self.init_base_currencies()
         self._crypto_currencies = self.init_crypto_currencies()
-
-# Init
-# coinbase = Coinbase()
-
-# price = coinbase.get_crypto_price(
-#     currency_pair = {
-#         "base": "USD",
-#         "crypto": "BTC"
-#     })
-# print(price)
-
-# # Get historic prices
-# historic_prices = coinbase.get_historic_prices({
-#     "start_date": date(2022, 1, 1),
-#     "end_date": date(2022, 2, 1),
-#     "currency_pair": {
-#         "base": "USD",
-#         "crypto": "BTC"
-#     }
-# })
-# print(
-#     json.dumps(
-#         historic_prices,
-#         indent=4
-#     )
-# )
